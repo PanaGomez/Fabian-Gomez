@@ -7,18 +7,18 @@ POST {{baseUrl}}/productos
 Content-Type: application/json
 
 {
-    "producto": "Laptop Gamer",
+    "producto": "Laptop Estudio",
     "stockAmount": 10
 }
 
 ### 2. Listar productos
 GET {{baseUrl}}/productos
 
-### 3. Obtener producto por ID (Reemplazar :id con uno real de la respuesta anterior)
-@productoId = 656a1b2c3d4e5f6g7h8i9j0k
+### 3. Obtener producto por ID (Si no funciona es porque no hay elementos en el listado, crear uno primero y colocar Id aca)
+@productoId = 692e1f985c707c49b972e61c
 GET {{baseUrl}}/productos/{{productoId}}
 
-### 4. Intento de update sin autenticación (Debe fallar 401)
+### 4. Intento de update sin autenticación (Debe tirar 401)
 PUT {{baseUrl}}/productos/{{productoId}}
 Content-Type: application/json
 
@@ -41,7 +41,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "producto": "Laptop Gamer Pro"
+    "producto": "Pc Gamer Pro con RTX 4090 super cara"
 }
 
 ### 7. Delete protegido (con API Key)
