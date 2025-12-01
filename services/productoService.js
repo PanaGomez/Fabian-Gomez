@@ -14,14 +14,25 @@ class ProductoService {
     }
 
     async updateProducto(id, data) {
-        // Business logic: increment minimum is 1 if updating stockAmount specifically?
-        // Requirement says: "Al incrementar stock (updateStock): el incremento mínimo es 1"
-        // But here we are doing a general update. If stockAmount is present, we should check it?
-        // The requirement is a bit ambiguous if it means "adding to existing" or "setting new value".
-        // "Al incrementar stock (updateStock)" sounds like a specific action, but the endpoint is PUT /:id which usually means replace/update fields.
-        // I will assume standard update validation handled by Mongoose min:0.
-        // If specific logic is needed for "increment", it might be a separate method or interpreted here.
-        // Given "PUT /api/v1/productos/:id Edita campos del producto", I will stick to standard update.
+        // Validar incremento mínimo de stock si se actualiza stockAmount
+        if (data.stockAmount !== undefined) {
+            const productoActual = await productoRepository.getById(id);
+            if (!productoActual) {
+                throw new Error('Producto no encontrado');
+            }
+            
+            const incremento = data.stockAmount - productoActual.stockAmount;
+            
+            // Si hay incremento, debe ser mínimo de 1
+            if (incremento > 0 && incremento < 1) {
+                throw new Error('El incremento mínimo de stock es 1');
+            }
+            
+            // Validar que el nuevo valor sea >= 0
+            if (data.stockAmount < 0) {
+                throw new Error('El stockAmount no puede ser negativo');
+            }
+        }
 
         return await productoRepository.update(id, data);
     }
