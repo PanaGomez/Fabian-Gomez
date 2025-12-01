@@ -1,0 +1,10 @@
+### Entrega Final Taller de Programación
+
+* nombre_alumno: Fabian
+* link: [URL del Repositorio]
+* Variables de entorno:
+ - PORT: Puerto del servidor (ej: 3000)
+ - DB_PROVIDER: Proveedor de base de datos (mongo)
+ - MONGO_URI: Cadena de conexión a MongoDB
+ - API_KEY: Clave para autenticación por x-api-key
+ - JWT_SECRET: Secreto para autenticación por Token Bearer

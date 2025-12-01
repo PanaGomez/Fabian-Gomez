@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:3000/api/v1
+@apiKey = 123456
+@token = supersecretkey
+
+### 1. Crear producto
+POST {{baseUrl}}/productos
+Content-Type: application/json
+
+{
+    "producto": "Laptop Gamer",
+    "stockAmount": 10
+}
+
+### 2. Listar productos
+GET {{baseUrl}}/productos
+
+### 3. Obtener producto por ID (Reemplazar :id con uno real de la respuesta anterior)
+@productoId = 656a1b2c3d4e5f6g7h8i9j0k
+GET {{baseUrl}}/productos/{{productoId}}
+
+### 4. Intento de update sin autenticación (Debe fallar 401)
+PUT {{baseUrl}}/productos/{{productoId}}
+Content-Type: application/json
+
+{
+    "stockAmount": 15
+}
+
+### 5. Update con x-api-key válida
+PUT {{baseUrl}}/productos/{{productoId}}
+Content-Type: application/json
+x-api-key: {{apiKey}}
+
+{
+    "stockAmount": 20
+}
+
+### 6. Update con Token Bearer válido
+PUT {{baseUrl}}/productos/{{productoId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "producto": "Laptop Gamer Pro"
+}
+
+### 7. Delete protegido (con API Key)
+DELETE {{baseUrl}}/productos/{{productoId}}
+x-api-key: {{apiKey}}
+
+### 8. Generar y descargar CSV de Albums
+GET {{baseUrl}}/albums/csv
