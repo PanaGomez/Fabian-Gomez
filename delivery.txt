@@ -1,10 +1,10 @@
 ### Entrega Final Taller de Programación
 
-* nombre_alumno: Fabian
+* nombre_alumno: Fabian Gomez
 * link: [URL del Repositorio]
 * Variables de entorno:
- - PORT: Puerto del servidor (ej: 3000)
+ - PORT: Puerto del servidor (3000)
  - DB_PROVIDER: Proveedor de base de datos (mongo)
- - MONGO_URI: Cadena de conexión a MongoDB
- - API_KEY: Clave para autenticación por x-api-key
- - JWT_SECRET: Secreto para autenticación por Token Bearer
+ - MONGO_URI: Cadena de conexión a MongoDB: mongodb+srv://fabitog01111_db_user:Ak5wGE9rmUsz6khk@cluster0.pjcupwx.mongodb.net/?appName=Cluster0
+ - API_KEY: Clave para autenticación por x-api-key: 123456
+ - JWT_SECRET: Secreto para autenticación por Token Bearer: supersecretkey
